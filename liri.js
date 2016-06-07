@@ -18,23 +18,45 @@ if(process.argv.length >= 4) {
 console.log(task);
 
 
+
+
 //switch leverage example code from Sean
 
 //functions
 
 //my-tweets last 20 tweets
+var tweets = function() {
+	var twitterUrl = //API request
+
+};
 
 
 //spotify-this-song artist, song name, preview link, album name, song name
 //default: what's my age again 
+var song = function() {
+	var songUrl = //API request
+
+};
 
 
 //movie-this title, year, rating, country, language,  plot, actors, rotten tomaotes rating, RT url
 //default Mr Nobody
+var movie = function() {
+
+	//API url
+	var queryUrl = 'http://www.omdbapi.com/?t=' + task +'&y=&plot=short&r=json';
+
+	// This line is just to help us debug against the actual URL.  
+	console.log(queryUrl)
+
+};
 
 
 
 //do-what-it-says use random.txt for request
+var says = function() {
+	var rickroll = //API request
+};
 
 
 //log.txt append request and output
