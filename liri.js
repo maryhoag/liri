@@ -9,6 +9,14 @@ var task = userInput[2];
 var question = userInput[3];
 
 //leverage code from last repo for multi-word question
+if(process.argv.length >= 4) {
+	for(i = 4; i < process.argv.length; i++) {
+		task += '+' + userInput[i];
+	}
+}
+
+console.log(task);
+
 
 //switch leverage example code from Sean
 
