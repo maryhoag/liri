@@ -1,6 +1,7 @@
 //require request
 var request = require('request');
 var twitterKeys = require('/keys.js');
+//var http = require('http'); I don't think we need this. Overly complicated for the task
 
 //gather info
 
@@ -26,7 +27,9 @@ console.log(task);
 
 //my-tweets last 20 tweets
 var tweets = function() {
-	var twitterUrl = //API request
+	
+	var twitterUrl = 'https://api.twitter.com/1.1/search/tweets.json?q=' + task + '&result_type=recent&count=20';
+	console.log(twitterUrl);
 
 };
 
@@ -34,7 +37,10 @@ var tweets = function() {
 //spotify-this-song artist, song name, preview link, album name, song name
 //default: what's my age again 
 var song = function() {
-	var songUrl = //API request
+	//and what is the callback uri???? 
+	
+	var songUrl = 'https://api.spotify.com/v1/search!query=' + task + '&type=track';
+	console.log(songUrl);
 
 };
 
@@ -48,6 +54,8 @@ var movie = function() {
 
 	// This line is just to help us debug against the actual URL.  
 	console.log(queryUrl)
+
+	//default Mr Nobody or Cyrano
 
 };
 
