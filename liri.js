@@ -29,7 +29,7 @@ console.log(task + ' ' + question);
 //}
 
 //my-tweets last 20 tweets
-var tweets = function() {
+var tweetFunction = function() {
 	var client = new twitter ({
 		consumer_key: twitter_keys.twitterKeys.consumerKey,
 		consumer_secret: twitter_keys.twitterKeys.consumerSecret,
@@ -45,7 +45,15 @@ var tweets = function() {
 		if(error) {
 			console.log(error);
 		}
-		console.log(tweets);
+		for(var prop in tweets) {
+			console.log(tweets[prop].text);
+			console.log(tweets[prop].created_at);
+			fs.appendFile('./log.txt', tweets[prop].txt + tweets[prop].created_at, function(err) {
+				if(err) {
+					console.log(err);
+				}
+			})
+		}
 	})
 };
 
@@ -62,8 +70,9 @@ var song = function(string) {
 	
 	var queryUrl = 'https://api.spotify.com/v1/search?q=' + question + '&type=track&limit=1';
 
-	//spotify.get(queryUrl, function(error, data) {
-	spotify.serach({tyep:track, query: question, limit: 1}, function(error, data){
+	spotify.get(queryUrl, function(error, data) {
+		//even with the query hardcoded in, this doesn't run
+	//spotify.search({type: 'track', query: 'hello', limit: 1}, function(error, data){
 		if (error) {
 			console.log(error);
 		} else{
@@ -83,8 +92,8 @@ var song = function(string) {
 			//console.log(text);
 
 			//append to log.txt
-			fs.appendFile('log.txt', question);
-			fs.appendFile('log.txt', text);
+			fs.appendFile('./log.txt', question);
+			fs.appendFile('./log.txt', text);
 		}
 	})
 
@@ -134,7 +143,8 @@ var movie = function(string) {
 				rottenURL: movieObject.tomatoURL
 			})
 
-			fs.appendFile('log.txt', question);
+			fs.appendFile('./log.txt', question);
+			fs.appendFile('./log.txt', text);
 		}
 	})
 
@@ -162,7 +172,7 @@ switch(task) {
 		movie(question);
 		break;
 	case 'my-tweets':
-		tweets(question);
+		tweetFunction(question);
 		break;
 	case 'spotify-this-song':
 		song(question);
